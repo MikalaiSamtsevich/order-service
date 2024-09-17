@@ -24,9 +24,9 @@ public class OrderController {
     @SneakyThrows
     @GetMapping("/{id}/{sleep}")
     public Order getOrder(@PathVariable Long id, @PathVariable Long sleep) {
-        log.error("HALLOO");
-        log.debug("HALLOO");
-        log.info("HALLOO");
+        log.error("Check error level");
+        log.debug("Check debug level");
+        log.info("Check info level");
         Thread.sleep(1000 * sleep);
         return orderRepo.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid id: %d".formatted(id)));
