@@ -1,0 +1,28 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: order-service
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    default-schema: orders
+    clean-disabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_APP_HOST:localhost}:5432/opentelemetry
+    username: admin
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: orders
+    open-in-view: false
